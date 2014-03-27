@@ -1,6 +1,7 @@
 var canvas = document.querySelector("#canvas");
 var ctx = canvas.getContext("2d");
 
+// I was just testing if I could set width and height easily
 canvas.width = 100;
 canvas.height = 100;
 
@@ -9,14 +10,19 @@ canvas.width = targetImage.width;
 canvas.height = targetImage.height;
 ctx.drawImage(targetImage, 0, 0);
 
+// todo: move into different module
+// handles event of uploading image and setting canvas to it.
 var takePicture = document.querySelector("#take_picture");
 takePicture.onchange = function (event) {
+    
+    //there shouldn't be more than 1 file, but this allows a check for that use case in the future
     var files = event.target.files,
         file;
     
     if (files && files.length > 0) {
         file = files[0];
-    
+        
+        
         var URL = window.URL || window.webkit.URL,
             imgURL = URL.createObjectURL(file),
             img = new Image();
@@ -51,4 +57,8 @@ btnChop.onclick = function () {
     else {
         console.log("No image loaded.");
     }
+}
+
+function testLoadPicture() {
+
 }
